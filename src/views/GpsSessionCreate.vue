@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { GpsSessionTypeService } from '@/services/GpsSessionTypeService';
 import { GpsSessionService } from '@/services/GpsSessionService';
+
 import { useRouter } from 'vue-router';
 import { onMounted, reactive, ref } from 'vue';
 import type { IResultObject } from '../types/IResultObject';
@@ -10,7 +11,6 @@ const router = useRouter()
 const requestIsOngoing = ref(false);
 const sessionTypeData = reactive<IResultObject<IGpsSessionType[]>>({});
 const service = new GpsSessionTypeService();
-const recordedAt = new Date().toISOString();
 
 const fetchPageData = async () => {
   requestIsOngoing.value = true;
@@ -50,10 +50,7 @@ const doCreateSession = async () => {
   const response = await GpsSessionService.createSession(
     name.value,
     description.value,
-    sessionType.value,
-    recordedAt,
-    paceMin.value,
-    paceMax.value
+    sessionType.value
   );
 
   if (response.data) {
@@ -100,19 +97,6 @@ const doCreateSession = async () => {
                 </option>
               </select>
             </div>
-
-            <div class="form-floating mb-3">
-              <label class="form-label" for="">Pace Min</label>
-              <input v-model="paceMin" class="form-control" autocomplete="password" aria-required="true"
-                placeholder="password" type="number">
-            </div>
-
-            <div class="form-floating mb-3">
-              <label class="form-label" for="">Pace Max</label>
-              <input v-model="paceMax" class="form-control" autocomplete="reenter-password" aria-required="true"
-                placeholder="password" type="number">
-            </div>
-
 
 
             <div>

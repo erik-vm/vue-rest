@@ -7,16 +7,13 @@ export class GpsSessionService extends BaseEntityService<IGpsSession> {
     super('gpsSessions')
   }
 
- static async createSession(name: string, description: string, gpsSessionTypeId:string, recordedAt:string, paceMin:number, paceMax:number): Promise<IResultObject<IGpsSession>> {
+ static async createSession(name: string, description: string, gpsSessionTypeId:string): Promise<IResultObject<IGpsSession>> {
     const url = 'gpsSessions'
     try {
       const registerData = {
       name,
       description,
-      gpsSessionTypeId,
-      recordedAt,
-      paceMin,
-      paceMax
+      gpsSessionTypeId
       }
 
 
