@@ -2,7 +2,17 @@
 import { RouterLink, useRouter } from 'vue-router';
 import { useUserDataStore } from '@/stores/userDataStore';
 
+const router = useRouter()
 const userStore = useUserDataStore();
+
+const logout = async () => {
+  userStore.firstName = '';
+  userStore.lastName = '';
+  userStore.jwt = '';
+  userStore.refreshToken = '';
+
+ await router.push("/")
+}
 
 </script>
 
@@ -31,6 +41,10 @@ const userStore = useUserDataStore();
               <RouterLink class="nav-link text-dark" to="/gpssession">GpsSessions</RouterLink>
             </li>
 
+            <li class="nav-item">
+              <RouterLink class="nav-link text-dark" to="/gpssessiontype">GpsSessionTypes</RouterLink>
+            </li>
+
           </ul>
 
           <ul v-if="!userStore.jwt" class="navbar-nav">
@@ -45,9 +59,10 @@ const userStore = useUserDataStore();
           <ul v-else class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link text-dark" href="#">Logout</a>
+              <a class="nav-link text-dark d-flex align-items-center" @click=logout style="cursor: pointer;">
+                Logout {{ userStore.firstName }} {{ userStore.lastName }}</a>
             </li>
-            <li class="d-flex align-items-center">| {{ userStore.firstName }} {{  userStore.lastName }}</li>
+
           </ul>
 
         </div>
