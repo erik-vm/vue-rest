@@ -1,3 +1,3 @@
-export interface IDomainId{
-  id: string;
+export interface IDomainId {
+  id: string
 }

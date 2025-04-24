@@ -1,9 +1,10 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-<div class="container">
-        © 2024 - WebApp - <a href="/Home/Privacy">Privacy</a>
+  <footer class="border-top footer text-muted">
+    <div class="container">
+      © 2025 - WebApp
     </div>
+  </footer>
 </template>

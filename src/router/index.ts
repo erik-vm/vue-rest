@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/HomeView.vue'
-import Page1 from '@/views/PageOne.vue'
+import Home from '@/views/Home.vue'
+import Page1 from '@/views/Page1.vue'
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
 import GpsSession from '@/views/GpsSession.vue'
